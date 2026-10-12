@@ -5,7 +5,10 @@ interface marquee {
     nameBn: string;
     categoryIcon: string;
     today: string;
-    change: string;
+    change :{
+        dir: string;
+        pct: string;
+    };
 }
 const Marquee = async () => {
     const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products')
@@ -24,8 +27,8 @@ const Marquee = async () => {
                         <span className="text-gray-700">{h.today} টাকা/কেজি</span>           
                         <span
                             className={`inline-flex items-center gap-1 font-semibold ${h.change.dir === 'up'
-                                ? 'text-green-600'
-                                : 'text-red-600'
+                                ? 'text-red-600'
+                                : 'text-green-600'
                             }`}
                             >
                             <span>

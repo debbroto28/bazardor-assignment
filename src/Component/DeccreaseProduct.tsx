@@ -1,7 +1,7 @@
 import React from 'react';
 interface decrease{
     categoryIcon: string;
-    categoryNameBn: string;
+    nameBn: string;
     today: string;
     change: {
         dir: string; 
@@ -27,7 +27,7 @@ const DeccreaseProduct = async() => {
                         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#eef6f0] text-2xl">{data.categoryIcon}</span>
                     <div>
 
-                    <h3 className="text-lg font-bold text-[#26372c]">{data.categoryNameBn}</h3>
+                    <h3 className="text-lg font-bold text-[#26372c]">{data.nameBn}</h3>
                     <p className="text-sm text-[#647568]"> প্রতি কেজি </p>
                     </div>
                     </div>

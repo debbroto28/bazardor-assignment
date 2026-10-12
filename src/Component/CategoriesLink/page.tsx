@@ -18,7 +18,7 @@ const CategoriesLink = async () => {
         <div className='border border-gray-100 bg-white px-6 py-4 mt-4'>
 
         <div className='flex gap-10 container mx-auto  ml-16'>
-            {categories.map((n , i) => <Link key={i} href ={n.slug}>{n.icon}{n.nameBn} </Link>)}
+            {categories.map((n , i) => <Link key={i} href ={`/CategoriPage/${n.slug}`}>{n.icon}{n.nameBn} </Link>)}
         </div>
         </div>
     );

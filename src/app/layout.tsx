@@ -29,8 +29,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         
         <NavBar />
+        <div className="bg-white mb-0 pt-0">
+
         <CategoriesLink />
-        <main>
+        </div>
+        <main className="min-h-screen bg-[#eef7f0]">
 
         {children}
         
