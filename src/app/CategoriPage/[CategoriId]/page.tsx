@@ -1,5 +1,12 @@
 import React from 'react';
-import ProductList from './ProductList';
+import ProductList, { Product } from './ProductList';
+
+interface Category {
+    id: string;
+    slug: string;
+    nameBn: string;
+    icon: string;
+}
 
 interface CategoriFileProps {
     params: Promise<{
@@ -12,15 +19,15 @@ const CategoriFile = async ({ params }: CategoriFileProps) => {
 
     
     const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/categories/${CategoriId}`)
-    const data = await res.json();
+    const data: Category = await res.json();
 
 
     const result = await fetch('https://openapi.programming-hero.com/api/bazardor/products')
-    const d = await result.json();
+    const d: Product[] = await result.json();
 
    
     const sameProducts = d.filter(
-        (item: any) => item.category === CategoriId
+        (item) => item.category === CategoriId
     );
 
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 interface decrease{
+    id: string;
     categoryIcon: string;
     nameBn: string;
     today: string;

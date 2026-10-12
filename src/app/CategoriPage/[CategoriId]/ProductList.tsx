@@ -3,9 +3,30 @@
 
 import React, { useState } from 'react';
 
-const ProductList = ({ products }: { products: any[] }) => {
+export interface Product {
+    id: number;
+    slug: string;
+    nameBn: string;
+    category: string;
+    categoryNameBn: string;
+    categoryIcon: string;
+    unit: string;
+    image: string;
+    today: number;
+    yesterday: number;
+    lastWeek: number;
+    lastMonth: number;
+    change: {
+        dir: 'up' | 'down' | 'flat';
+        pct: number;
+    };
+}
+
+type SortType = 'default' | 'low' | 'high';
+
+const ProductList = ({ products }: { products: Product[] }) => {
     
-    const [sort, setSort] = useState('default');
+    const [sort, setSort] = useState<SortType>('default');
 
   
     const sortedProducts = [...products];
@@ -24,7 +45,7 @@ const ProductList = ({ products }: { products: any[] }) => {
                 <select
                     id="sort"
                     value={sort}
-                    onChange={(e) => setSort(e.target.value)}
+                    onChange={(e) => setSort(e.target.value as SortType)}
                     className="rounded-lg border border-[#dce9df] bg-white px-3 py-2 text-sm text-[#26372c] outline-none"
                 >
                     <option value="default">ডিফল্ট</option>
@@ -38,7 +59,7 @@ const ProductList = ({ products }: { products: any[] }) => {
             </h1>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {sortedProducts.map((product: any) => (
+                {sortedProducts.map((product) => (
                     <div key={product.id} className="rounded-2xl border border-[#dce9df] bg-[#f9fcfa] p-5">
                         <div className="flex items-center gap-3">
                             <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#eef6f0] text-2xl">

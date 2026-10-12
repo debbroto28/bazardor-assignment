@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface increase{
+    id: string;
     categoryIcon: string;
     nameBn: string;
     today: string;
