@@ -17,7 +17,7 @@ const AllProducts = async () => {
     return (
         <div>
             
-            <div className=" container mx-auto bg-[#eef7f0] px-4 py-8 md:px-8">
+            <div id="all-products" className="container mx-auto bg-[#eef7f0] px-4 py-8 md:px-8">
             <h1 className="mb-5 text-xl font-bold text-[#1c3025]">
                 সব পণ্য
                 </h1>

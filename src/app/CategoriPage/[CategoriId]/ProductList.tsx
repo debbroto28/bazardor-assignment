@@ -2,7 +2,7 @@
 
 
 import React, { useState } from 'react';
-
+import Link from "next/link";
 export interface Product {
     id: number;
     slug: string;
@@ -25,21 +25,21 @@ export interface Product {
 type SortType = 'default' | 'low' | 'high';
 
 const ProductList = ({ products }: { products: Product[] }) => {
-    
+
     const [sort, setSort] = useState<SortType>('default');
 
-  
+
     const sortedProducts = [...products];
 
     if (sort === 'low') {
-        sortedProducts.sort((a, b) => a.today - b.today);   
+        sortedProducts.sort((a, b) => a.today - b.today);
     } else if (sort === 'high') {
-        sortedProducts.sort((a, b) => b.today - a.today);   
+        sortedProducts.sort((a, b) => b.today - a.today);
     }
 
     return (
         <>
-           
+
             <div className="mt-5 flex items-center justify-end gap-3 rounded-2xl border border-[#dce9df] bg-[#f9fcfa] p-5">
                 <label htmlFor="sort" className="text-sm text-[#647568]">সাজান</label>
                 <select
@@ -60,38 +60,55 @@ const ProductList = ({ products }: { products: Product[] }) => {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {sortedProducts.map((product) => (
-                    <div key={product.id} className="rounded-2xl border border-[#dce9df] bg-[#f9fcfa] p-5">
+                    <Link
+                        key={product.id}
+                        href={`/products/${product.id}`}
+                        className="block rounded-2xl border border-[#dce9df] bg-[#f9fcfa] p-5 transition hover:border-green-400 hover:shadow-sm"
+                    >
                         <div className="flex items-center gap-3">
                             <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#eef6f0] text-2xl">
                                 {product.image}
                             </span>
+
                             <div>
-                                <h3 className="text-lg font-bold text-[#26372c]">{product.nameBn}</h3>
+                                <h3 className="text-lg font-bold text-[#26372c]">
+                                    {product.nameBn}
+                                </h3>
+                                <p className="text-sm text-[#647568]">
+                                    {product.unit}
+                                </p>
                             </div>
                         </div>
+
                         <div className="mt-4">
-                            <h4 className="text-sm text-[#647568]">আজকের দাম</h4>
+                            <h4 className="text-sm text-[#647568]">
+                                আজকের দাম
+                            </h4>
+
                             <div className="mt-1 flex items-center justify-between gap-2">
                                 <span className="text-xl font-bold text-[#26372c]">
                                     {product.today} টাকা
                                 </span>
+
                                 <span
-                                    className={`inline-flex items-center gap-1 font-semibold ${
-                                        product.change.dir === 'up'
-                                            ? 'text-red-600'
-                                            : product.change.dir === 'down'
-                                            ? 'text-green-600'
-                                            : 'text-gray-500'
-                                    }`}
+                                    className={
+                                        product.change.dir === "up"
+                                            ? "font-semibold text-red-600"
+                                            : product.change.dir === "down"
+                                                ? "font-semibold text-green-600"
+                                                : "font-semibold text-gray-500"
+                                    }
                                 >
-                                    <span>
-                                        {product.change.dir === 'up' ? '▲' : product.change.dir === 'down' ? '▼' : '—'}
-                                    </span>
-                                    <span>{Math.abs(product.change.pct)}%</span>
+                                    {product.change.dir === "up"
+                                        ? "▲"
+                                        : product.change.dir === "down"
+                                            ? "▼"
+                                            : "—"}{" "}
+                                    {Math.abs(product.change.pct)}%
                                 </span>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </>

@@ -20,7 +20,12 @@ const Banner = () => {
                 <p>সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
             <br />
             <br />
-            <button className='btn bg-green-700 text-white rounded-md'>সব পণ্য দেখুন</button>
+            <a
+                    href="#all-products"
+                    className="mt-10 inline-block rounded-md bg-green-700 px-4 py-3 font-bold text-white shadow transition hover:bg-green-800"
+                >
+                    সব পণ্য দেখুন
+                </a>
             </div>
             <div>
                 <Image src={bannerImage} alt="Banner" />
