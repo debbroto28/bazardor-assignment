@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Component/Navbar/page";
 import CategoriesLink from "@/Component/CategoriesLink/page";
+import Marquee from "@/Component/Marquee";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <CategoriesLink />
         </div>
+        <div className="bg-white">
+            <Marquee />
+            </div>
         <main className="min-h-screen bg-[#eef7f0]">
 
         {children}
