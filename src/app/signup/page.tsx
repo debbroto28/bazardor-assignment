@@ -18,10 +18,10 @@ const SignUpPage = () => {
         const name = formData.get('name') as string;
         const email = formData.get('email') as string;
         const password = formData.get('password') as string;
-        
 
-        
-        
+
+
+
 
         const { data, error } = await authClient.signUp.email({
             name,
@@ -38,6 +38,18 @@ const SignUpPage = () => {
         if (data) {
             router.push('/');
         }
+    };
+
+    const handleGoogleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
+    const handlegitHubSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "github"
+        });
     };
 
     return (
@@ -107,6 +119,9 @@ const SignUpPage = () => {
                     </button>
                 </fieldset>
             </form>
+            <button onClick={handleGoogleSignIn} className="btn ">Sign up with Google</button>
+            <button onClick={handlegitHubSignIn} className="btn ">Sign up with gitHub</button>
+
         </div>
     );
 };

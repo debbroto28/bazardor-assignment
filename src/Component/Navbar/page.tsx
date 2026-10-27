@@ -2,6 +2,7 @@
 import React from 'react';
 import logo from '@/Assets/logo-icon.png';
 import Image from 'next/image';
+import UserInfo from '@/Component/Navbar/UserInfo'
 const NavBar = () => {
 
     const date = new Date().toLocaleString('bn-BD', {
@@ -21,10 +22,7 @@ const NavBar = () => {
                 <p>{date}</p>
             </div>
             </div>
-            <div className="flex gap-2">
-            <button className='btn btn-shost text-neutral-700 transition-colors'>সাইন ইন</button>
-            <button className="btn bg-green-600 text-white">সাইন আপ</button>
-            </div>
+            <UserInfo />
         </div>
     
     );
