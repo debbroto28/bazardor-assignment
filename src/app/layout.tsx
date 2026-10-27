@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "@/Component/Navbar/page";
 import CategoriesLink from "@/Component/CategoriesLink/page";
 import Marquee from "@/Component/Marquee";
-
+import Footer from "@/Component/Footer"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         
         </main>
         
-        
+        <Footer />
         </body>
     </html>
   );

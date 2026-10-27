@@ -26,7 +26,7 @@ const ProfilePage = () => {
         const newUserData = Object.fromEntries(fromData.entries()) as {name: string}
          
         await authClient.updateUser ({
-            ...updateName
+            ...newUserData
         })
     }
       

@@ -1,12 +1,18 @@
+'use client'
 import Image from 'next/image';
-import React from 'react';
+import React , {useEffect, useState} from 'react';
 import bannerImage from '@/Assets/bazar-hero.png'
 const Banner = () => {
 
-    const date = new Date().toLocaleString('bn-BD', {
-        dateStyle: 'full',
+    const [date, setDate] = useState('');
 
-    });
+    useEffect(() => {
+        setDate(
+            new Date().toLocaleString('bn-BD', {
+                dateStyle: 'full',
+            })
+        );
+    }, []);
 
     return (
         <div className='flex mt-10 container mx-auto justify-between bg-white px-4 py-4 rounded-4xl'>
