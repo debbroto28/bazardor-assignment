@@ -10,11 +10,11 @@ if (!dbUrl) {
   throw new Error("BETTER_AUTH_DB_URL is missing. Add it in .env.local or Vercel Environment Variables.");
 }
 export const auth = betterAuth({
-  database: mongodbAdapter(db, { client }),
+  
 
   baseURL: process.env.BETTER_AUTH_URL,
   secret: process.env.BETTER_AUTH_SECRET,
-  
+
     emailAndPassword: {
         enabled : true
     },
