@@ -1,9 +1,14 @@
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
-import { postProcessMetadata } from "next/dist/lib/metadata/metadata-resolution-primitives";
 
-const client = new MongoClient(process.env.BETTER_AUTH_DB_URL as string);
+// MongoClient throws synchronously when given an undefined connection string, which
+// crashes `next build` while it collects page data for the auth route. The client
+// connects lazily, so a placeholder lets the build finish; set BETTER_AUTH_DB_URL
+// in the Netlify environment for auth to work at runtime.
+const client = new MongoClient(
+  process.env.BETTER_AUTH_DB_URL || "mongodb://127.0.0.1:27017"
+);
 const db = client.db("bazar-dor");
 
 export const auth = betterAuth({

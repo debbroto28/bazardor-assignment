@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Component/Navbar/page";
@@ -32,10 +33,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <NavBar />
         <div className="bg-white mb-0 pt-0">
 
-        <CategoriesLink />
+        <Suspense fallback={<div className="h-16 mt-4" />}>
+          <CategoriesLink />
+        </Suspense>
         </div>
         <div className="bg-white">
-            <Marquee />
+            <Suspense fallback={<div className="h-12" />}>
+              <Marquee />
+            </Suspense>
             </div>
         <main className="min-h-screen bg-[#eef7f0]">
 
