@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductList, { Product } from './ProductList';
+import { notFound } from 'next/navigation';
 
 interface Category {
     id: string;
@@ -21,6 +22,14 @@ const CategoriFile = async ({ params }: CategoriFileProps) => {
     const res = await fetch(`https://api.abcz.workers.dev/api/bazardor/categories/${CategoriId}`)
     const data: Category = await res.json();
 
+     if (!res.ok) {
+        notFound();
+    }
+
+
+     if (!data) {
+        notFound();
+    }
 
     const result = await fetch('https://openapi.programming-hero.com/api/bazardor/products')
     const d: Product[] = await result.json();

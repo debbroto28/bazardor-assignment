@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import Link from "next/link";
+import { notFound } from 'next/navigation';
 export interface Product {
     id: number;
     slug: string;
@@ -21,6 +22,9 @@ export interface Product {
         pct: number;
     };
 }
+
+
+
 
 type SortType = 'default' | 'low' | 'high';
 

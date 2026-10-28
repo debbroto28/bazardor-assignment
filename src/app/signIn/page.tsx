@@ -101,7 +101,7 @@ const SignInPage = () => {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="btn rounded-xl w-full sm:flex-1"
+            className="btn rounded-xl w-55"
           >
             <FcGoogle size={22} />
             Google দিয়ে চালিয়ে যান
@@ -110,7 +110,7 @@ const SignInPage = () => {
           <button
             type="button"
             onClick={handlegitHubSignIn}
-            className="btn rounded-xl w-full sm:flex-1"
+            className="btn rounded-xl w-55"
           >
             <FaGithub size={22} />
             GitHub দিয়ে চালিয়ে যান

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 interface Category {
@@ -14,6 +15,12 @@ const CategoriesLink = async () => {
     const res = await fetch ('https://openapi.programming-hero.com/api/bazardor/categories')
     const categories : Category[] = await res.json()
     console.log(categories);
+
+   if(!categories){
+           notFound()
+       }
+   
+
     return (
         <div className='border border-gray-100 bg-white px-6 py-4 mt-4'>
 
