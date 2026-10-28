@@ -4,6 +4,9 @@
 import { authClient } from '@/lib/auth-client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -117,10 +120,35 @@ const SignUpPage = () => {
                     >
                         অ্যাকাউন্ট তৈরি করুন
                     </button>
+                    <div className="divider">অথবা</div>
+                    <div className="flex gap-4">
+                         
+                            
+                        <button onClick={handleGoogleSignIn} className="btn rounded-xl w-60">
+                            <FcGoogle size={22} />
+                            Google দিয়ে চালিয়ে যান
+                            </button>
+                          
+                        <button onClick={handlegitHubSignIn} className="btn rounded-xl w-60">
+                              <FaGithub size={22} />
+                            GitHub দিয়ে চালিয়ে যান
+                            </button>
+                    </div>
+                    <div className="flex justify-center mt-3 gap-2 text-sm">
+                        <p>অ্যাকাউন্ট আছে? </p>
+                        <Link href={"/signIn"}>
+                            <p className="text-green-600">সাইন ইন করুন</p>
+                        </Link>
+                    </div>
                 </fieldset>
             </form>
-            <button onClick={handleGoogleSignIn} className="btn ">Sign up with Google</button>
-            <button onClick={handlegitHubSignIn} className="btn ">Sign up with gitHub</button>
+
+            <div className=" mt-5 ">
+                <Link href={"/"}>
+                    <p className="text-gray-500">← হোম পেজে ফিরে যান</p>
+                </Link>
+            </div>
+
 
         </div>
     );
