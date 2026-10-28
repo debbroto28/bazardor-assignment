@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -39,6 +40,7 @@ const SignUpPage = () => {
         }
 
         if (data) {
+            toast.success("Account created successfully!");
             router.push('/');
         }
     };

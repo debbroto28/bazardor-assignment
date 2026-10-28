@@ -3,7 +3,7 @@
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { CornerDownLeft } from "lucide-react";
-
+import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 const ProfilePage = () => {
@@ -11,8 +11,10 @@ const ProfilePage = () => {
         const user = session?.user
         const handleSignout = async () => {
     await authClient.signOut({
+        
         fetchOptions: {
             onSuccess: () => {
+                toast.success("Sign out successfully");
                 router.push("/");
             },
         },

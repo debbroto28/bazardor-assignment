@@ -5,6 +5,7 @@ import NavBar from "@/Component/Navbar/page";
 import CategoriesLink from "@/Component/CategoriesLink/page";
 import Marquee from "@/Component/Marquee";
 import Footer from "@/Component/Footer"
+import { Toaster } from "react-hot-toast";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+         <Toaster position="top-right" />
         
         <NavBar />
         <div className="bg-white mb-0 pt-0">
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Marquee />
             </div>
         <main className="min-h-screen bg-[#eef7f0]">
+         
 
         {children}
         

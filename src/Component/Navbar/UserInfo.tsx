@@ -4,7 +4,7 @@ import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
-
+import toast from "react-hot-toast";
 const UserInfo = () => {
     const { data: session } = authClient.useSession();
     const user = session?.user;
@@ -13,6 +13,7 @@ const UserInfo = () => {
 
     const handleSignout = async () => {
         await authClient.signOut();
+        toast.success("Sign out successfully");
     };
 
     return (

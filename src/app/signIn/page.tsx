@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import toast from "react-hot-toast";
 const SignInPage = () => {
   const onSubmit = async (
     e: React.SubmitEvent<HTMLFormElement>
@@ -29,12 +30,16 @@ const SignInPage = () => {
 
     if (error) {
       console.error("Sign in failed:", error);
+      toast.error("Invalid password");
       return;
     }
 
     if (data) {
+      toast.success("Sign in successfully");
       console.log("Sign in successful:", data);
+      
     }
+    
   };
 
  const handleGoogleSignIn = async() => {
